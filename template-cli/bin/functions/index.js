@@ -141,7 +141,7 @@ const createFilterSectionFile = () => {
   setParameter: React.Dispatch<React.SetStateAction<Parameter>>;
   setPageNumber: React.Dispatch<React.SetStateAction<number>>;
   setSort: React.Dispatch<React.SetStateAction<string>>;
-  setCurrentHeadCell: React.Dispatch<React.SetStateAction<string | number>>;
+  setCurrentHeadCell: React.Dispatch<React.SetStateAction<string>>;
   disabled?: boolean;
 }
  

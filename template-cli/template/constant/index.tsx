@@ -48,7 +48,7 @@ export const parameterMapping: TableDataMapping = {
   searchKey: "searchKey",
 };
 
-export const emptyParameters = {
+export const emptyParameters :Parameter = {
   lcFinancingRequestId: "",
   lcRequestNumber: "",
   applicantName: "",
