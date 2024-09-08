@@ -34,7 +34,7 @@ const myFunctions = ` {
       ${tableParameters
         .map((param) => {
           if (param.isChip) {
-            return `${param.parameterName}: <ArenaDefaultChip type={statusColors[item?.${param.backendKey} as string]}>{Utils.formatFirstLetterToUpperCase(item.${param.backendKey})}</ArenaDefaultChip>`;
+            return `${param.parameterName}: <ArenaDefaultChip type={statusColors[item?.${param.backendKey} as string] || "blue"}>{Utils.formatFirstLetterToUpperCase(item.${param.backendKey})}</ArenaDefaultChip>`;
           } else if (param.isDate) {
             return `${param.parameterName}: Utils.dateFormatter(item.${param.backendKey}, 'DD MMM YYYY')`;
           } else {

@@ -68,8 +68,8 @@ const HedayaFinancingRequests = () => {
 requestDate: Utils.dateFormatter(item.requestDate, 'DD MMM YYYY'),
 lcRequestNumber: Utils.formatFirstLetterToUpperCase(item.lcRequestNumber),
 applicantName: Utils.formatFirstLetterToUpperCase(item.applicantName),
-lcStatus: <ArenaDefaultChip type={statusColors[item?.lcStatus as string]}>{Utils.formatFirstLetterToUpperCase(item.lcStatus)}</ArenaDefaultChip>,
-lcStage: <ArenaDefaultChip type={statusColors[item?.stage as string]}>{Utils.formatFirstLetterToUpperCase(item.stage)}</ArenaDefaultChip>,
+lcStatus: <ArenaDefaultChip type={statusColors[item?.lcStatus as string] || "blue"}>{Utils.formatFirstLetterToUpperCase(item.lcStatus)}</ArenaDefaultChip>,
+lcStage: <ArenaDefaultChip type={statusColors[item?.stage as string] || "blue"}>{Utils.formatFirstLetterToUpperCase(item.stage)}</ArenaDefaultChip>,
 searchKey: Utils.formatFirstLetterToUpperCase(item.searchKey)
     }
 ;
