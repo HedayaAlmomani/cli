@@ -1,0 +1,33 @@
+[
+    {
+      "parameterName": "financingRequestNumber",
+      "inputComponent": "input",
+      "placeholder": "e.g. 642684383",
+      "label": "Request Number"
+    },
+    {
+      "parameterName": "lcRequestNumber",
+      "inputComponent": "input",
+      "placeholder": "e.g. 642684383",
+      "label": "LC Request Number"
+    },
+    {
+      "parameterName": "applicantName",
+      "inputComponent": "input",
+      "placeholder": "e.g. Hedaya Osama",
+      "label": "Applicant Name"
+    },
+    {
+      "parameterName": "lcStatus",
+      "inputComponent": "select",
+      "placeholder": "Select",
+      "label": "LC Status"
+    },
+    {
+      "parameterName": "requestDate",
+      "inputComponent": "Date",
+      "placeholder": "hi",
+      "label": "hiii"
+    }
+  ]
+  

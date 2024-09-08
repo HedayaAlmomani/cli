@@ -1,0 +1,44 @@
+[
+  {
+    "parameterName": "financingRequestNumber",
+    "backendKey": "financingRequestNumber",
+    "isChip": false,
+    "isDate": false
+  },
+  {
+    "parameterName": "requestDate",
+    "backendKey": "requestDate",
+    "isChip": false,
+    "isDate": true
+  },
+  {
+    "parameterName": "lcRequestNumber",
+    "backendKey": "lcRequestNumber",
+    "isChip": false,
+    "isDate": false
+  },
+  {
+    "parameterName": "applicantName",
+    "backendKey": "applicantName",
+    "isChip": false,
+    "isDate": false
+  },
+  {
+    "parameterName": "lcStatus",
+    "backendKey": "lcStatus",
+    "isChip": true,
+    "isDate": false
+  },
+  {
+    "parameterName": "lcStage",
+    "backendKey": "stage",
+    "isChip": true,
+    "isDate": false
+  },
+  {
+    "parameterName": "searchKey",
+    "backendKey": "searchKey",
+    "isChip": false,
+    "isDate": false
+  }
+]
