@@ -12,7 +12,6 @@ import { Button, SideDrawer, Date, SelectGroup } from "digitinary-ui";
 //@ts-ignore
 import { Utils } from "@arena/common-web";
 import {
-  lCStatusOptions,
   Parameter,
   emptyParameters,
 } from "../../constant";
