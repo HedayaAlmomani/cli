@@ -16,8 +16,9 @@ const createFilterSectionFile = () => {
       import { Button, SideDrawer, Date, SelectGroup } from 'digitinary-ui'`,
     `//@ts-ignore
       import { Utils } from '@arena/common-web'`,
-    "import { Parameter, emptyParameters } from '../../constant'",
+    "import { emptyParameters } from '../../constant'",
     "import './style.scss'",
+    " type Parameter = Record<string, string | null>;"
   ];
 
   const formFields = filterParameters

@@ -12,8 +12,9 @@ import {
       import { Button, SideDrawer, Date, SelectGroup } from 'digitinary-ui'
 //@ts-ignore
       import { Utils } from '@arena/common-web'
-import { Parameter, emptyParameters } from '../../constant'
+import { emptyParameters } from '../../constant'
 import './style.scss'
+ type Parameter = Record<string, string | null>;
  interface FilterSectionProps {
   parameter: Parameter;
   setParameter: React.Dispatch<React.SetStateAction<Parameter>>;
