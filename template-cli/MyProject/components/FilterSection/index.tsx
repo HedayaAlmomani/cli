@@ -14,7 +14,15 @@ import {
       import { Utils } from '@arena/common-web'
 import { Parameter, emptyParameters } from '../../constant'
 import './style.scss'
-  
+ interface FilterSectionProps {
+  parameter: Parameter;
+  setParameter: React.Dispatch<React.SetStateAction<Parameter>>;
+  setPageNumber: React.Dispatch<React.SetStateAction<number>>;
+  setSort: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentHeadCell: React.Dispatch<React.SetStateAction<string | number>>;
+  disabled?: boolean;
+}
+ 
   const FilterSection = ({
     parameter,
     setParameter,
@@ -22,7 +30,7 @@ import './style.scss'
     setSort,
     setCurrentHeadCell,
     disabled,
-  }: any) => {
+  }: FilterSectionProps) => {
   
     const [openFilterDrawer, setOpenFilterDrawer] = useState<boolean>(false);
     const [saveIsDisabled, setSaveIsDisabled] = useState<boolean>(false);
