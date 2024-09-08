@@ -116,8 +116,8 @@ const HedayaFinancingRequests = () => {
   };
 
   return (
-    <div className="finance-dashboard-container">
-      <div className="finance-header-container">
+    <div className="table-page-container">
+      <div className="table-header-container">
         <ArenaInput
           onChange={(value: string) => {
             handleParameterChange(value as string, "searchKey");
@@ -127,7 +127,7 @@ const HedayaFinancingRequests = () => {
           placeholder={`Search`}
           type="text"
           value={parameter.searchKey}
-          className="financeInputField"
+          className="search-input-field"
           endAdornment={
             <SearchIcon
               data-id="SEARCH_FIELD_ICON"
