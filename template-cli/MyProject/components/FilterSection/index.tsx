@@ -72,7 +72,7 @@ import './style.scss'
       Object.values(parameter)?.some(Boolean);
   
     return (
-      <div className="new-financing-form-container">
+      <div className="filter-form-container">
         <Button
           variant="outlined"
           color="primary"
@@ -88,14 +88,14 @@ import './style.scss'
           setOpen={setOpenFilterDrawer}
           width="620px"
           children={
-            <div className="filter-financing-form">
+            <div className="filter-form">
               <SectionHead
                 text="Advance Filtration"
                 withClose={true}
                 closeFunction={() => setOpenFilterDrawer(!openFilterDrawer)}
               />
   
-              <div className="financing-filter-container">
+              <div className="filter-section-container">
                 
     <ArenaInput
       onChange={(value: string | number | null) =>

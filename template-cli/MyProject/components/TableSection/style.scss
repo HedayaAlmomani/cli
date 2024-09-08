@@ -1,0 +1,42 @@
+.filter-form-container {
+  .filter-form {
+    height: 100vh;
+    overflow: hidden;
+
+    .filter-section-container {
+      margin-top: 20px;
+      height: calc(100vh - 175px);
+      overflow: overlay;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0px 20px;
+    }
+
+    .container-filters-actions {
+      display: grid;
+      grid-template-columns: 36% auto;
+      grid-column-gap: 20px;
+      background-color: var(--background-color-main);
+      padding: 20px;
+      border-top: 1px solid var(--background-color-white-light);
+      button {
+        height: 50px;
+      }
+    }
+
+    .phone-number-container .field-container .drop-down-container .option-row {
+      border-top: 1px solid rgba(216, 218, 229, 1);
+      border-bottom: 1px solid rgba(216, 218, 229, 1);
+      padding: 5px;
+      background-color: #fff;
+    }
+  }
+}
+[data-theme="dark"] {
+  .filter-form-container {
+    .container-filters-actions {
+      border-top: 1px solid var(--border-color-neutral);
+    }
+  }
+}

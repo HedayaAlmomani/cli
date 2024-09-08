@@ -79,7 +79,7 @@ const FilterSection = ({
     Object.values(parameter)?.some(Boolean);
 
   return (
-    <div className="new-financing-form-container">
+    <div className="filter-form-container">
       <Button
         variant="outlined"
         color="primary"
@@ -95,14 +95,14 @@ const FilterSection = ({
         setOpen={setOpenFilterDrawer}
         width="620px"
         children={
-          <div className="filter-financing-form">
+          <div className="filter-form">
             <SectionHead
               text="Advance Filtration"
               withClose={true}
               closeFunction={() => setOpenFilterDrawer(!openFilterDrawer)}
             />
 
-            <div className="financing-filter-container">
+            <div className="filter-section-container">
               <>"MY_PARAMETER"</>
             </div>
 

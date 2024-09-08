@@ -126,7 +126,7 @@ const createFilterSectionFile = () => {
   ${myStates}
   ${myFunctions}
     return (
-      <div className="new-financing-form-container">
+      <div className="filter-form-container">
         <Button
           variant="outlined"
           color="primary"
@@ -142,14 +142,14 @@ const createFilterSectionFile = () => {
           setOpen={setOpenFilterDrawer}
           width="620px"
           children={
-            <div className="filter-financing-form">
+            <div className="filter-form">
               <SectionHead
                 text="Advance Filtration"
                 withClose={true}
                 closeFunction={() => setOpenFilterDrawer(!openFilterDrawer)}
               />
   
-              <div className="financing-filter-container">
+              <div className="filter-section-container">
                 ${formFields}
               </div>
   
