@@ -11,15 +11,6 @@ export interface TableDataMapping {
   [key: string]: string;
 }
 
-export const parameterMapping: TableDataMapping = {
-  financingRequestNumber: "financingRequestNumber",
-  requestDate: "requestDate",
-  lcRequestNumber: "lcRequestNumber",
-  applicantName: "applicantName",
-  lcStatus: "lcStatus",
-  searchKey: "searchKey",
-};
-
 export const emptyParameters: Record<string, string | null> = {
   lcFinancingRequestId: "",
   lcRequestNumber: "",
