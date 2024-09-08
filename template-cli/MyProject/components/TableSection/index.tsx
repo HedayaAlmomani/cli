@@ -21,7 +21,6 @@ import {
   headCellsFinanceRequests,
   permissions,
   TableDataMapping,
-  statusColors,
   Parameter,
 } from "../../constant";
 import FilterSection from "../FilterSection";
@@ -34,6 +33,8 @@ const HedayaFinancingRequests = () => {
   const [sort, setSort] = useState<string>("");
   const [data, setData] = useState<any[]>([{}]);
   const [parameter, setParameter] = useState<Parameter>(filterSearchParameters);
+  const statusColors = { DRAFT: "gray" };
+  // avaliable Colors => "green" , "red" , "c" , "blue" ,"black" ,"dark-blue" ,"orange"
 
   const handleParameterChange = (newValue: string, key: string) => {
     setParameter((prev: Parameter) => ({ ...prev, [key]: newValue }));

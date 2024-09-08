@@ -56,12 +56,3 @@ export const emptyParameters :Parameter = {
   lcStatus: "",
 };
 
-export const statusColors: { [key: string]: string } = {
-  APPROVED: "green",
-  REJECTED: "red",
-  EXPIRED: "gray",
-  IN_PROGRESS: "blue",
-  INITIATED: "black",
-  SUBMITTED: "dark-blue",
-  AWAITING_REVISION: "orange",
-};
