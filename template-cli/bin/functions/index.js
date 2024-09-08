@@ -54,7 +54,20 @@ const createFilterSectionFile = () => {
   `;
 
         case "Date":
-          return ``;
+          return `<Date
+                value={parameterFilter?.${param.parameterName}}
+                onChange={(value: string | number | null) =>
+                  handleChange(value as string, '${param.parameterName}')
+                }
+                label="${param.label}"
+                placeholder="DD MMM YYYY"
+                disabled={false}
+                size="large"
+                clearable={true}
+                fullWidth={false}
+                required={true}
+                errorMsg={''}
+              />`;
 
         default:
           return "";
