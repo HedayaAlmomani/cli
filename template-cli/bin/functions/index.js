@@ -62,7 +62,7 @@ const createFilterSectionFile = () => {
       placeholder="${param.placeholder}"
       required={true}
       options={[{ groupName: '', list: [{label:"" , value:""}] }]}
-      onChange={(selectedOption: Option) => handleSelectChange(selectedOption, "${param.parameterName}")}
+      onChange={(selectedOption: Option | null) => handleSelectChange(selectedOption, "${param.parameterName}")}
       //put the Options instead of the empty array
       value={[{label:"" , value:""}].find((option) => option.value === parameterFilter?.${param.parameterName}) || null}
       isMultiple={false}

@@ -165,7 +165,7 @@ const emptyParameters = {
       placeholder="Select"
       required={true}
       options={[{ groupName: '', list: [{label:"" , value:""}] }]}
-      onChange={(selectedOption: Option) => handleSelectChange(selectedOption, "lcStatus")}
+      onChange={(selectedOption: Option | null) => handleSelectChange(selectedOption, "lcStatus")}
       //put the Options instead of the empty array
       value={[{label:"" , value:""}].find((option) => option.value === parameterFilter?.lcStatus) || null}
       isMultiple={false}
