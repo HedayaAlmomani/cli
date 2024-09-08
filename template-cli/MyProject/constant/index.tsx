@@ -1,13 +1,3 @@
-
-export const filterSearchParameters: Record<string, string | null> = {
-  financingRequestNumber: "",
-  lcRequestNumber: "",
-  applicantName: "",
-  requestDate: "",
-  lcStatus: "",
-  searchKey: "",
-};
-
 export const headCellsFinanceRequests = [
   { id: "lcRequestNumber", label: `LC Request Number`, sortable: true },
   { id: "applicantName", label: `Applicant Name`, sortable: true },
