@@ -123,6 +123,14 @@ const createFilterSectionFile = () => {
     const isFilterApplied =
       Object.values(parameterFilter)?.some(Boolean) ||
       Object.values(parameter)?.some(Boolean);
+
+           useEffect(() => {
+        handleSaveActiveState()
+      }, [parameter, parameterFilter])
+    
+      useEffect(() => {
+        setParameterFilter({ ...parameter })
+      }, [openFilterDrawer])
   `;
 
   const fileContent = `
