@@ -23,6 +23,10 @@ import './style.scss'
   disabled?: boolean;
 }
  
+ interface Option {
+  value: string
+  label: string | JSX.Element
+}
   const FilterSection = ({
     parameter,
     setParameter,
@@ -52,7 +56,7 @@ import './style.scss'
     };
   
     const handleSelectChange = (
-      selectedOption: { value: string; label: string } | null,
+      selectedOption: Option | null,
       parameterName: string
     ) => {
       handleChange(selectedOption ? selectedOption.value : '', parameterName);
@@ -153,7 +157,7 @@ import './style.scss'
       placeholder="Select"
       required={true}
       options={[{ groupName: '', list: [{label:"" , value:""}] }]}
-      onChange={(selectedOption: any) => handleSelectChange(selectedOption, "lcStatus")}
+      onChange={(selectedOption: Option) => handleSelectChange(selectedOption, "lcStatus")}
       //put the Options instead of the empty array
       value={[{label:"" , value:""}].find((option) => option.value === parameterFilter?.lcStatus) || null}
       isMultiple={false}
