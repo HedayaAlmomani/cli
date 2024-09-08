@@ -21,9 +21,9 @@ import {
   headCellsFinanceRequests,
   permissions,
   TableDataMapping,
-  Parameter,
 } from "../../constant";
 import FilterSection from "../FilterSection";
+export type Parameter = Record<string, string | null>;
 
 const HedayaFinancingRequests = () => {
   const [pageNumber, setPageNumber] = useState<number>(0);

@@ -1,14 +1,5 @@
-export type Parameter = {
-      lcFinancingRequestId: string | null;
-      lcRequestNumber: string | null;
-      applicantName: string | null;
-      requestDate: string | null;
-      lcStatus: string | null;
-      [key: string]: string | null;
-    }
-  | Record<string, string>;
 
-export const filterSearchParameters :Parameter = {
+export const filterSearchParameters: Record<string, string | null> = {
   financingRequestNumber: "",
   lcRequestNumber: "",
   applicantName: "",
@@ -48,11 +39,10 @@ export const parameterMapping: TableDataMapping = {
   searchKey: "searchKey",
 };
 
-export const emptyParameters :Parameter = {
+export const emptyParameters: Record<string, string | null> = {
   lcFinancingRequestId: "",
   lcRequestNumber: "",
   applicantName: "",
   requestDate: "",
   lcStatus: "",
 };
-
