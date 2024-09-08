@@ -136,7 +136,15 @@ const createFilterSectionFile = () => {
 
   const fileContent = `
   ${staticImports.join("\n")}
-  
+ interface FilterSectionProps {
+  parameter: Record<string, string>;
+  setParameter: React.Dispatch<React.SetStateAction<number>>;
+  setPageNumber: React.Dispatch<React.SetStateAction<number>>;
+  setSort: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentHeadCell: React.Dispatch<React.SetStateAction<string | number>>;
+  disabled?: boolean;
+}
+ 
   const FilterSection = ({
     parameter,
     setParameter,
@@ -144,7 +152,7 @@ const createFilterSectionFile = () => {
     setSort,
     setCurrentHeadCell,
     disabled,
-  }: any) => {
+  }: FilterSectionProps) => {
   ${myStates}
   ${myFunctions}
     return (
