@@ -1,12 +1,3 @@
-export const headCellsFinanceRequests = [
-  { id: "lcRequestNumber", label: `LC Request Number`, sortable: true },
-  { id: "applicantName", label: `Applicant Name`, sortable: true },
-  { id: "requestDate", label: `Request Date`, sortable: true },
-  { id: "lcStatus", label: `LC Status`, sortable: true },
-  { id: "lcStage", label: `LC Stage`, sortable: true },
-  { id: "actions", label: `Actions`, sortable: false },
-];
-
 export const applicationName: string = "@arena/trade-finance-web";
 
 export const permissions: Record<string, string> = {

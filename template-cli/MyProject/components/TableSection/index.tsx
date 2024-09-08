@@ -16,11 +16,7 @@ import "./style.scss";
 //@ts-ignore
 import { getAllDataService } from "../../services";
 //@ts-ignore
-import {
-  headCellsFinanceRequests,
-  permissions,
-  TableDataMapping,
-} from "../../constant";
+import { permissions, TableDataMapping } from "../../constant";
 import FilterSection from "../FilterSection";
 export type Parameter = Record<string, string | null>;
 
@@ -42,6 +38,7 @@ const HedayaFinancingRequests = () => {
   searchKey: "",
 }
   );
+  const headCellsFinanceRequests = [{"id":"financingRequestNumber","label":"LC Request Number","sortable":true},{"id":"requestDate","label":"Request Date","sortable":true},{"id":"lcRequestNumber","label":"LC Request Number","sortable":true},{"id":"applicantName","label":"Applicant Name","sortable":true},{"id":"lcStatus","label":"LC Status","sortable":true},{"id":"stage","label":"LC Stage","sortable":true},{"id":"actions","label":"Actions","sortable":false}];
   const statusColors = { DRAFT: "gray" };
   // avaliable Colors => "green" , "red" , "c" , "blue" ,"black" ,"dark-blue" ,"orange"
 

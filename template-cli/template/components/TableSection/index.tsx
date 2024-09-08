@@ -16,11 +16,7 @@ import "./style.scss";
 //@ts-ignore
 import { getAllDataService } from "../../services";
 //@ts-ignore
-import {
-  headCellsFinanceRequests,
-  permissions,
-  TableDataMapping,
-} from "../../constant";
+import { permissions, TableDataMapping } from "../../constant";
 import FilterSection from "../FilterSection";
 export type Parameter = Record<string, string | null>;
 
@@ -35,6 +31,7 @@ const HedayaFinancingRequests = () => {
     //@ts-ignore
     "filterSearchParameters"
   );
+  const headCellsFinanceRequests = "headCellsFinanceRequests";
   const statusColors = { DRAFT: "gray" };
   // avaliable Colors => "green" , "red" , "c" , "blue" ,"black" ,"dark-blue" ,"orange"
 

@@ -67,6 +67,29 @@ function generateObjectString(paramsArray) {
 
   return objectString;
 }
+
+function transformArray(paramsArray) {
+  // Filter out the object with parameterName 'searchKey'
+  const filteredArray = paramsArray.filter(
+    (param) => param.parameterName !== "searchKey"
+  );
+
+  // Transform the filtered array into the desired format
+  const transformedArray = filteredArray.map((param) => ({
+    id: param.backendKey,
+    label: param.label || param.parameterName, // Use label if available, fallback to parameterName
+    sortable: true,
+  }));
+
+  // Add the Actions object at the end
+  transformedArray.push({
+    id: "actions",
+    label: "Actions",
+    sortable: false,
+  });
+
+  return transformedArray;
+}
 async function main() {
   try {
     const tableParametersPath = path.join(
@@ -95,11 +118,15 @@ async function main() {
     );
     await replaceTextInFile(filePath, '"MY_PARAMETER"', myFunctions);
     const filterEmptyData = generateObjectString(filterParameters);
+    const headCells = JSON.stringify(transformArray(tableParameters));
+    console.log({headCells});
+    
     await replaceTextInFile(
       filePath,
       '"filterSearchParameters"',
       filterEmptyData
     );
+    await replaceTextInFile(filePath, '"headCellsFinanceRequests"', headCells);
 
     console.log(`Template copied to ${targetFolder}`);
   } catch (error) {
