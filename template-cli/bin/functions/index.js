@@ -42,10 +42,10 @@ const createFilterSectionFile = () => {
     <SelectGroup
       placeholder="${param.placeholder}"
       required={true}
-      options={[{ groupName: '', list: lCStatusOptions }]}
+      options={[{ groupName: '', list: [{label:"" , value:""}] }]}
       onChange={(selectedOption: any) => handleSelectChange(selectedOption, "${param.parameterName}")}
       //put the Options instead of the empty array
-      value={[].find((option) => option.value === parameterFilter?.${param.parameterName}) || null}
+      value={[{label:"" , value:""}].find((option) => option.value === parameterFilter?.${param.parameterName}) || null}
       isMultiple={false}
       label="${param.label}"
       withSearch={false}
