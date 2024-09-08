@@ -137,8 +137,8 @@ const createFilterSectionFile = () => {
   const fileContent = `
   ${staticImports.join("\n")}
  interface FilterSectionProps {
-  parameter: Record<string, string>;
-  setParameter: React.Dispatch<React.SetStateAction<number>>;
+  parameter: Parameter;
+  setParameter: React.Dispatch<React.SetStateAction<Parameter>>;
   setPageNumber: React.Dispatch<React.SetStateAction<number>>;
   setSort: React.Dispatch<React.SetStateAction<string>>;
   setCurrentHeadCell: React.Dispatch<React.SetStateAction<string | number>>;
