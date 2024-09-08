@@ -12,7 +12,7 @@ import {
       import { Button, SideDrawer, Date, SelectGroup } from 'digitinary-ui'
 //@ts-ignore
       import { Utils } from '@arena/common-web'
-import { lCStatusOptions, Parameter, emptyParameters } from '../../constant'
+import { Parameter, emptyParameters } from '../../constant'
 import './style.scss'
   
   const FilterSection = ({
@@ -70,6 +70,14 @@ import './style.scss'
     const isFilterApplied =
       Object.values(parameterFilter)?.some(Boolean) ||
       Object.values(parameter)?.some(Boolean);
+
+           useEffect(() => {
+        handleSaveActiveState()
+      }, [parameter, parameterFilter])
+    
+      useEffect(() => {
+        setParameterFilter({ ...parameter })
+      }, [openFilterDrawer])
   
     return (
       <div className="filter-form-container">
@@ -105,7 +113,7 @@ import './style.scss'
       placeholder="e.g. 642684383"
       label="Request Number"
       value={parameterFilter?.financingRequestNumber}
-      restrictedCharactersRegex={/[^0-9]/}
+      restrictedCharactersRegex={null}
     />
   
 
@@ -117,7 +125,7 @@ import './style.scss'
       placeholder="e.g. 642684383"
       label="LC Request Number"
       value={parameterFilter?.lcRequestNumber}
-      restrictedCharactersRegex={/[^0-9]/}
+      restrictedCharactersRegex={null}
     />
   
 
@@ -129,16 +137,17 @@ import './style.scss'
       placeholder="e.g. Hedaya Osama"
       label="Applicant Name"
       value={parameterFilter?.applicantName}
-      restrictedCharactersRegex={/[^0-9]/}
+      restrictedCharactersRegex={null}
     />
   
 
     <SelectGroup
       placeholder="Select"
       required={true}
-      options={[{ groupName: '', list: lCStatusOptions }]}
+      options={[{ groupName: '', list: [{label:"" , value:""}] }]}
       onChange={(selectedOption: any) => handleSelectChange(selectedOption, "lcStatus")}
-      value={lCStatusOptions.find((option) => option.value === parameterFilter?.lcStatus) || null}
+      //put the Options instead of the empty array
+      value={[{label:"" , value:""}].find((option) => option.value === parameterFilter?.lcStatus) || null}
       isMultiple={false}
       label="LC Status"
       withSearch={false}
@@ -146,7 +155,20 @@ import './style.scss'
       size="large"
     />
   
-
+<Date
+                value={parameterFilter?.requestDate}
+                onChange={(value: string | number | null) =>
+                  handleChange(value as string, 'requestDate')
+                }
+                label="hiii"
+                placeholder="hi"
+                disabled={false}
+                size="large"
+                clearable={true}
+                fullWidth={false}
+                required={true}
+                errorMsg={''}
+              />
               </div>
   
               <div className="container-filters-actions">
