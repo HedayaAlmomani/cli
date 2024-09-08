@@ -12,9 +12,15 @@ import {
       import { Button, SideDrawer, Date, SelectGroup } from 'digitinary-ui'
 //@ts-ignore
       import { Utils } from '@arena/common-web'
-import { emptyParameters } from '../../constant'
 import './style.scss'
  type Parameter = Record<string, string | null>;
+const emptyParameters = {
+  lcFinancingRequestId: "",
+  lcRequestNumber: "",
+  applicantName: "",
+  requestDate: "",
+  lcStatus: "",
+}
  interface FilterSectionProps {
   parameter: Parameter;
   setParameter: React.Dispatch<React.SetStateAction<Parameter>>;

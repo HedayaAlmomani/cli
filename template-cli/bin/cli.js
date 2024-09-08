@@ -50,6 +50,7 @@ function generateFunctionDefinitions(tableParameters) {
     })
     .join(",\n");
 }
+// handle the filter 
 function generateObjectString(paramsArray) {
   // Create the initial string with the opening curly brace
   let objectString = "{\n";
@@ -67,7 +68,7 @@ function generateObjectString(paramsArray) {
 
   return objectString;
 }
-
+// handle the colom of the table
 function transformArray(paramsArray) {
   // Filter out the object with parameterName 'searchKey'
   const filteredArray = paramsArray.filter(
@@ -118,8 +119,9 @@ async function main() {
     );
     await replaceTextInFile(filePath, '"MY_PARAMETER"', myFunctions);
     const filterEmptyData = generateObjectString(filterParameters);
+    console.log(filterEmptyData);
+    
     const headCells = JSON.stringify(transformArray(tableParameters));
-    console.log({headCells});
     
     await replaceTextInFile(
       filePath,

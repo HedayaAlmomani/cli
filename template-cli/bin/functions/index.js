@@ -1,6 +1,24 @@
 const fs = require("fs");
 const filterParameters = require("../../configs/filterParameter.json");
+function generateCustomObjectString(paramsArray) {
+  // Define the keys and the order you want in the final object
+  const desiredKeys = {
+    lcFinancingRequestId: "",
+    lcRequestNumber: "",
+    applicantName: "",
+    requestDate: "",
+    lcStatus: "",
+  };
 
+  // Construct the string based on the desiredKeys
+  let objectString = "{\n";
+  Object.keys(desiredKeys).forEach((key) => {
+    objectString += `  ${key}: "",\n`;
+  });
+  objectString += "}";
+
+  return objectString;
+}
 const createFilterSectionFile = () => {
   const staticImports = [
     `import React, { useState, useEffect } from 'react'`,
@@ -16,9 +34,9 @@ const createFilterSectionFile = () => {
       import { Button, SideDrawer, Date, SelectGroup } from 'digitinary-ui'`,
     `//@ts-ignore
       import { Utils } from '@arena/common-web'`,
-    "import { emptyParameters } from '../../constant'",
     "import './style.scss'",
-    " type Parameter = Record<string, string | null>;"
+    " type Parameter = Record<string, string | null>;",
+    `const emptyParameters = ${generateCustomObjectString(filterParameters)}`,
   ];
 
   const formFields = filterParameters
