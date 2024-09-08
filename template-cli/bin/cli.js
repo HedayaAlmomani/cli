@@ -39,7 +39,7 @@ function generateFunctionDefinitions(tableParameters) {
       } else if (param.isDate) {
         value = `Utils.dateFormatter(item.${param.backendKey}, 'DD MMM YYYY')`;
       } else {
-        value = `Utils.formatFirstLetterToUpperCase(item.${param.backendKey})`;
+        value = `item.${param.backendKey}`;
       }
 
       // Return the formatted parameter definition
