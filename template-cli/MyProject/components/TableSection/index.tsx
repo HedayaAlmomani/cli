@@ -64,10 +64,10 @@ const HedayaFinancingRequests = () => {
   const handleTableData = (data: any[]) => {
     return data?.map((item: any) => {
       const mappedData = {
-      financingRequestNumber: Utils.formatFirstLetterToUpperCase(item.financingRequestNumber),
+      financingRequestNumber: item.financingRequestNumber,
 requestDate: Utils.dateFormatter(item.requestDate, 'DD MMM YYYY'),
-lcRequestNumber: Utils.formatFirstLetterToUpperCase(item.lcRequestNumber),
-applicantName: Utils.formatFirstLetterToUpperCase(item.applicantName),
+lcRequestNumber: item.lcRequestNumber,
+applicantName: item.applicantName,
 lcStatus: <ArenaDefaultChip 
                    type={statusColors[item?.lcStatus as string] || "blue"}>
                    {Utils.formatFirstLetterToUpperCase(item.lcStatus)}
@@ -76,7 +76,7 @@ lcStage: <ArenaDefaultChip
                    type={statusColors[item?.stage as string] || "blue"}>
                    {Utils.formatFirstLetterToUpperCase(item.stage)}
                  </ArenaDefaultChip>,
-searchKey: Utils.formatFirstLetterToUpperCase(item.searchKey)
+searchKey: item.searchKey
     };
       const ViewButton = (
         <Button
