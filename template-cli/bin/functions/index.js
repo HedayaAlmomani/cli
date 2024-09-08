@@ -16,7 +16,7 @@ const createFilterSectionFile = () => {
       import { Button, SideDrawer, Date, SelectGroup } from 'digitinary-ui'`,
     `//@ts-ignore
       import { Utils } from '@arena/common-web'`,
-    "import { lCStatusOptions, Parameter, emptyParameters } from '../../constant'",
+    "import { Parameter, emptyParameters } from '../../constant'",
     "import './style.scss'",
   ];
 
@@ -44,7 +44,8 @@ const createFilterSectionFile = () => {
       required={true}
       options={[{ groupName: '', list: lCStatusOptions }]}
       onChange={(selectedOption: any) => handleSelectChange(selectedOption, "${param.parameterName}")}
-      value={lCStatusOptions.find((option) => option.value === parameterFilter?.${param.parameterName}) || null}
+      //put the Options instead of the empty array
+      value={[].find((option) => option.value === parameterFilter?.${param.parameterName}) || null}
       isMultiple={false}
       label="${param.label}"
       withSearch={false}
