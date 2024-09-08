@@ -43,7 +43,7 @@ const createFilterSectionFile = () => {
       placeholder="${param.placeholder}"
       required={true}
       options={[{ groupName: '', list: [{label:"" , value:""}] }]}
-      onChange={(selectedOption: any) => handleSelectChange(selectedOption, "${param.parameterName}")}
+      onChange={(selectedOption: Option) => handleSelectChange(selectedOption, "${param.parameterName}")}
       //put the Options instead of the empty array
       value={[{label:"" , value:""}].find((option) => option.value === parameterFilter?.${param.parameterName}) || null}
       isMultiple={false}
@@ -98,7 +98,7 @@ const createFilterSectionFile = () => {
     };
   
     const handleSelectChange = (
-      selectedOption: { value: string; label: string } | null,
+      selectedOption: Option | null,
       parameterName: string
     ) => {
       handleChange(selectedOption ? selectedOption.value : '', parameterName);
@@ -145,6 +145,10 @@ const createFilterSectionFile = () => {
   disabled?: boolean;
 }
  
+ interface Option {
+  value: string
+  label: string | JSX.Element
+}
   const FilterSection = ({
     parameter,
     setParameter,
