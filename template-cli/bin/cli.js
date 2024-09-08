@@ -1,66 +1,75 @@
-const fs = require("fs");
-const path = require("path");
-const process = require("process");
-const { createFilterSectionFile, replaceTextInFile } = require("./functions");
+const fs = require('fs').promises;
+const path = require('path');
+const process = require('process');
+const { createFilterSectionFile, replaceTextInFile } = require('./functions');
+
 const parentFolder = path.dirname(__dirname);
-const templateFolder = path.join(parentFolder, "template");
-const targetFolder = path.join(process.cwd(), "MyProject");
+const templateFolder = path.join(parentFolder, 'template');
+const targetFolder = path.join(process.cwd(), 'MyProject');
 
-// Copy the template folder to the target location
-function copyTemplateFolder(templateDir, targetDir) {
-  fs.mkdirSync(targetDir, { recursive: true });
-  const items = fs.readdirSync(templateDir);
+// Function to copy the template folder to the target location
+async function copyTemplateFolder(templateDir, targetDir) {
+  await fs.mkdir(targetDir, { recursive: true });
+  const items = await fs.readdir(templateDir);
 
-  items.forEach((item) => {
+  await Promise.all(items.map(async (item) => {
     const itemPath = path.join(templateDir, item);
     const targetPath = path.join(targetDir, item);
+    const stats = await fs.stat(itemPath);
 
-    if (fs.lstatSync(itemPath).isDirectory()) {
-      copyTemplateFolder(itemPath, targetPath);
+    if (stats.isDirectory()) {
+      await copyTemplateFolder(itemPath, targetPath);
     } else {
-      fs.copyFileSync(itemPath, targetPath);
+      await fs.copyFile(itemPath, targetPath);
     }
-  });
+  }));
 }
 
-const tableParameters = JSON.parse(
-  fs.readFileSync(
-    path.join(parentFolder, "configs", "tableParameters.json"),
-    "utf8"
-  )
-);
+// Function to generate function definitions based on table parameters
+function generateFunctionDefinitions(tableParameters) {
+  return tableParameters
+    .map(param => {
+      // Determine the value to use based on the parameter type
+      let value;
+      if (param.isChip) {
+        value = `<ArenaDefaultChip 
+                   type={statusColors[item?.${param.backendKey} as string] || "blue"}>
+                   {Utils.formatFirstLetterToUpperCase(item.${param.backendKey})}
+                 </ArenaDefaultChip>`;
+      } else if (param.isDate) {
+        value = `Utils.dateFormatter(item.${param.backendKey}, 'DD MMM YYYY')`;
+      } else {
+        value = `Utils.formatFirstLetterToUpperCase(item.${param.backendKey})`;
+      }
 
-const myFunctions = ` {
-      ${tableParameters
-        .map((param) => {
-          if (param.isChip) {
-            return `${param.parameterName}: <ArenaDefaultChip type={statusColors[item?.${param.backendKey} as string] || "blue"}>{Utils.formatFirstLetterToUpperCase(item.${param.backendKey})}</ArenaDefaultChip>`;
-          } else if (param.isDate) {
-            return `${param.parameterName}: Utils.dateFormatter(item.${param.backendKey}, 'DD MMM YYYY')`;
-          } else {
-            return `${param.parameterName}: Utils.formatFirstLetterToUpperCase(item.${param.backendKey})`;
-          }
-        })
-        .join(",\n")}
-    }
-`;
-
-try {
-  createFilterSectionFile();
-  copyTemplateFolder(templateFolder, targetFolder);
-
-  // Replace "MY_PARAMETER" with the specified HTML snippet
-  console.log({targetFolder});
-  
-  const filePath = path.join(
-    targetFolder,
-    "components",
-    "TableSection",
-    "index.tsx"
-  );
-  replaceTextInFile(filePath, '"MY_PARAMETER"', myFunctions);
-
-  console.log(`Template copied to ${targetFolder}`);
-} catch (error) {
-  console.error("Error processing template:", error);
+      // Return the formatted parameter definition
+      return `${param.parameterName}: ${value}`;
+    })
+    .join(',\n');
 }
+
+
+async function main() {
+  try {
+    const tableParametersPath = path.join(parentFolder, 'configs', 'tableParameters.json');
+    const tableParameters = JSON.parse(await fs.readFile(tableParametersPath, 'utf8'));
+
+    const myFunctions = `{
+      ${generateFunctionDefinitions(tableParameters)}
+    }`;
+
+    await createFilterSectionFile();
+    await copyTemplateFolder(templateFolder, targetFolder);
+
+    // Replace "MY_PARAMETER" with the specified HTML snippet
+    
+    const filePath = path.join(targetFolder, 'components', 'TableSection', 'index.tsx');
+    await replaceTextInFile(filePath, '"MY_PARAMETER"', myFunctions);
+
+    console.log(`Template copied to ${targetFolder}`);
+  } catch (error) {
+    console.error('Error processing template:', error);
+  }
+}
+
+main();
