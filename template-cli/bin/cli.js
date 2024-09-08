@@ -36,7 +36,7 @@ function generateFunctionDefinitions(tableParameters) {
       let value;
       if (param.isChip) {
         value = `<ArenaDefaultChip 
-                   type={statusColors[item?.${param.backendKey} as string] || "blue"}>
+                   type={statusColors[item?.${param.backendKey} as keyof typeof statusColors] || "blue"}>
                    {Utils.formatFirstLetterToUpperCase(item.${param.backendKey})}
                  </ArenaDefaultChip>`;
       } else if (param.isDate) {

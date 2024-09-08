@@ -30,15 +30,27 @@ const HedayaFinancingRequests = () => {
   const [parameter, setParameter] = useState<Parameter>(
     //@ts-ignore
     {
-  financingRequestNumber: "",
-  lcRequestNumber: "",
-  applicantName: "",
-  lcStatus: "",
-  requestDate: "",
-  searchKey: "",
-}
+      financingRequestNumber: "",
+      lcRequestNumber: "",
+      applicantName: "",
+      lcStatus: "",
+      requestDate: "",
+      searchKey: "",
+    }
   );
-  const headCellsFinanceRequests = [{"id":"financingRequestNumber","label":"LC Request Number","sortable":true},{"id":"requestDate","label":"Request Date","sortable":true},{"id":"lcRequestNumber","label":"LC Request Number","sortable":true},{"id":"applicantName","label":"Applicant Name","sortable":true},{"id":"lcStatus","label":"LC Status","sortable":true},{"id":"stage","label":"LC Stage","sortable":true},{"id":"actions","label":"Actions","sortable":false}];
+  const headCellsFinanceRequests = [
+    {
+      id: "financingRequestNumber",
+      label: "LC Request Number",
+      sortable: true,
+    },
+    { id: "requestDate", label: "Request Date", sortable: true },
+    { id: "lcRequestNumber", label: "LC Request Number", sortable: true },
+    { id: "applicantName", label: "Applicant Name", sortable: true },
+    { id: "lcStatus", label: "LC Status", sortable: true },
+    { id: "stage", label: "LC Stage", sortable: true },
+    { id: "actions", label: "Actions", sortable: false },
+  ];
   const statusColors = { DRAFT: "gray" };
   // avaliable Colors => "green" , "red" , "c" , "blue" ,"black" ,"dark-blue" ,"orange"
 
@@ -72,20 +84,31 @@ const HedayaFinancingRequests = () => {
   const handleTableData = (data: any[]) => {
     return data?.map((item: any) => {
       const mappedData = {
-      financingRequestNumber: item.financingRequestNumber,
-requestDate: Utils.dateFormatter(item.requestDate, 'DD MMM YYYY'),
-lcRequestNumber: item.lcRequestNumber,
-applicantName: item.applicantName,
-lcStatus: <ArenaDefaultChip 
-                   type={statusColors[item?.lcStatus as string] || "blue"}>
-                   {Utils.formatFirstLetterToUpperCase(item.lcStatus)}
-                 </ArenaDefaultChip>,
-lcStage: <ArenaDefaultChip 
-                   type={statusColors[item?.stage as string] || "blue"}>
-                   {Utils.formatFirstLetterToUpperCase(item.stage)}
-                 </ArenaDefaultChip>,
-searchKey: item.searchKey
-    };
+        financingRequestNumber: item.financingRequestNumber,
+        requestDate: Utils.dateFormatter(item.requestDate, "DD MMM YYYY"),
+        lcRequestNumber: item.lcRequestNumber,
+        applicantName: item.applicantName,
+        lcStatus: (
+          <ArenaDefaultChip
+            type={
+              statusColors[item?.lcStatus as keyof typeof statusColors] ||
+              "blue"
+            }
+          >
+            {Utils.formatFirstLetterToUpperCase(item.lcStatus)}
+          </ArenaDefaultChip>
+        ),
+        lcStage: (
+          <ArenaDefaultChip
+            type={
+              statusColors[item?.stage as keyof typeof statusColors] || "blue"
+            }
+          >
+            {Utils.formatFirstLetterToUpperCase(item.stage)}
+          </ArenaDefaultChip>
+        ),
+        searchKey: item.searchKey,
+      };
       const ViewButton = (
         <Button
           variant="link"
