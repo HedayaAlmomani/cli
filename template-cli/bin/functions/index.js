@@ -16,7 +16,7 @@ const createFilterSectionFile = () => {
       import { Button, SideDrawer, Date, SelectGroup } from 'digitinary-ui'`,
     `//@ts-ignore
       import { Utils } from '@arena/common-web'`,
-    "import { lCStatusOptions, serviceName, Parameter, emptyParameters } from '../../constant'",
+    "import { lCStatusOptions, Parameter, emptyParameters } from '../../constant'",
     "import './style.scss'",
   ];
 

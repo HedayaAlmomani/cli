@@ -44,7 +44,6 @@ export const lCStatusOptions = [
   { label: "label", value: "value" },
 ];
 
-export const serviceName = "finance";
 
 export const emptyParameters = {
   lcFinancingRequestId: "",

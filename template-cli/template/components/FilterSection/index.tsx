@@ -13,7 +13,6 @@ import { Button, SideDrawer, Date, SelectGroup } from "digitinary-ui";
 import { Utils } from "@arena/common-web";
 import {
   lCStatusOptions,
-  serviceName,
   Parameter,
   emptyParameters,
 } from "../../constant";
