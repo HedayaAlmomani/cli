@@ -60,7 +60,7 @@ const createFilterSectionFile = () => {
                   handleChange(value as string, '${param.parameterName}')
                 }
                 label="${param.label}"
-                placeholder="DD MMM YYYY"
+                placeholder="${param.placeholder}"
                 disabled={false}
                 size="large"
                 clearable={true}
