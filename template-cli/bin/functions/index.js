@@ -22,18 +22,18 @@ const createFilterSectionFile = () => {
 
   const formFields = filterParameters
     .map((param) => {
-      switch (param.inputComponent) {
+      switch (param?.inputComponent) {
         case "input":
           return `
     <ArenaInput
       onChange={(value: string | number | null) =>
-        handleChange(value as string, '${param.parameterName}')
+        handleChange(value as string, '${param?.parameterName}')
       }
       size="large"
-      placeholder="${param.placeholder}"
-      label="${param.label}"
-      value={parameterFilter?.${param.parameterName}}
-      restrictedCharactersRegex={/[^0-9]/}
+      placeholder="${param?.placeholder}"
+      label="${param?.label}"
+      value={parameterFilter?.${param?.parameterName}}
+      restrictedCharactersRegex={${param.isNumber ? "/[^0-9]/" : "null"}}
     />
   `;
 
