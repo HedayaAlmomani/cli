@@ -1,34 +1,37 @@
-const fs = require('fs').promises;
-const path = require('path');
-const process = require('process');
-const { createFilterSectionFile, replaceTextInFile } = require('./functions');
+const fs = require("fs").promises;
+const path = require("path");
+const process = require("process");
+const { createFilterSectionFile, replaceTextInFile } = require("./functions");
+const filterParameters = require("../configs/filterParameter.json");
 
 const parentFolder = path.dirname(__dirname);
-const templateFolder = path.join(parentFolder, 'template');
-const targetFolder = path.join(process.cwd(), 'MyProject');
+const templateFolder = path.join(parentFolder, "template");
+const targetFolder = path.join(process.cwd(), "MyProject");
 
 // Function to copy the template folder to the target location
 async function copyTemplateFolder(templateDir, targetDir) {
   await fs.mkdir(targetDir, { recursive: true });
   const items = await fs.readdir(templateDir);
 
-  await Promise.all(items.map(async (item) => {
-    const itemPath = path.join(templateDir, item);
-    const targetPath = path.join(targetDir, item);
-    const stats = await fs.stat(itemPath);
+  await Promise.all(
+    items.map(async (item) => {
+      const itemPath = path.join(templateDir, item);
+      const targetPath = path.join(targetDir, item);
+      const stats = await fs.stat(itemPath);
 
-    if (stats.isDirectory()) {
-      await copyTemplateFolder(itemPath, targetPath);
-    } else {
-      await fs.copyFile(itemPath, targetPath);
-    }
-  }));
+      if (stats.isDirectory()) {
+        await copyTemplateFolder(itemPath, targetPath);
+      } else {
+        await fs.copyFile(itemPath, targetPath);
+      }
+    })
+  );
 }
 
 // Function to generate function definitions based on table parameters
 function generateFunctionDefinitions(tableParameters) {
   return tableParameters
-    .map(param => {
+    .map((param) => {
       // Determine the value to use based on the parameter type
       let value;
       if (param.isChip) {
@@ -45,14 +48,35 @@ function generateFunctionDefinitions(tableParameters) {
       // Return the formatted parameter definition
       return `${param.parameterName}: ${value}`;
     })
-    .join(',\n');
+    .join(",\n");
 }
+function generateObjectString(paramsArray) {
+  // Create the initial string with the opening curly brace
+  let objectString = "{\n";
 
+  // Iterate over the params array to build the object string
+  paramsArray.forEach((param, index) => {
+    objectString += `  ${param.parameterName}: "",\n`;
+  });
 
+  // Add a custom `searchKey` key-value pair
+  objectString += `  searchKey: "",\n`;
+
+  // Close the object string with the closing curly brace
+  objectString += "}";
+
+  return objectString;
+}
 async function main() {
   try {
-    const tableParametersPath = path.join(parentFolder, 'configs', 'tableParameters.json');
-    const tableParameters = JSON.parse(await fs.readFile(tableParametersPath, 'utf8'));
+    const tableParametersPath = path.join(
+      parentFolder,
+      "configs",
+      "tableParameters.json"
+    );
+    const tableParameters = JSON.parse(
+      await fs.readFile(tableParametersPath, "utf8")
+    );
 
     const myFunctions = `{
       ${generateFunctionDefinitions(tableParameters)}
@@ -62,13 +86,24 @@ async function main() {
     await copyTemplateFolder(templateFolder, targetFolder);
 
     // Replace "MY_PARAMETER" with the specified HTML snippet
-    
-    const filePath = path.join(targetFolder, 'components', 'TableSection', 'index.tsx');
+
+    const filePath = path.join(
+      targetFolder,
+      "components",
+      "TableSection",
+      "index.tsx"
+    );
     await replaceTextInFile(filePath, '"MY_PARAMETER"', myFunctions);
+    const filterEmptyData = generateObjectString(filterParameters);
+    await replaceTextInFile(
+      filePath,
+      '"filterSearchParameters"',
+      filterEmptyData
+    );
 
     console.log(`Template copied to ${targetFolder}`);
   } catch (error) {
-    console.error('Error processing template:', error);
+    console.error("Error processing template:", error);
   }
 }
 

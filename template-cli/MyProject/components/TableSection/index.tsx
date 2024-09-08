@@ -17,7 +17,6 @@ import "./style.scss";
 import { getAllDataService } from "../../services";
 //@ts-ignore
 import {
-  filterSearchParameters,
   headCellsFinanceRequests,
   permissions,
   TableDataMapping,
@@ -32,7 +31,17 @@ const HedayaFinancingRequests = () => {
   const [currentHeadCell, setCurrentHeadCell] = useState<string>("");
   const [sort, setSort] = useState<string>("");
   const [data, setData] = useState<any[]>([{}]);
-  const [parameter, setParameter] = useState<Parameter>(filterSearchParameters);
+  const [parameter, setParameter] = useState<Parameter>(
+    //@ts-ignore
+    {
+  financingRequestNumber: "",
+  lcRequestNumber: "",
+  applicantName: "",
+  lcStatus: "",
+  requestDate: "",
+  searchKey: "",
+}
+  );
   const statusColors = { DRAFT: "gray" };
   // avaliable Colors => "green" , "red" , "c" , "blue" ,"black" ,"dark-blue" ,"orange"
 
