@@ -38,12 +38,6 @@ export const parameterMapping: TableDataMapping = {
   searchKey: "searchKey",
 };
 
-export const lCStatusOptions = [
-  { label: "label", value: "value" },
-  { label: "label", value: "value" },
-  { label: "label", value: "value" },
-];
-
 export const emptyParameters = {
   lcFinancingRequestId: "",
   lcRequestNumber: "",
