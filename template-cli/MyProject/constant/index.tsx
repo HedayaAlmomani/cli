@@ -1,4 +1,14 @@
-export const filterSearchParameters = {
+export type Parameter = {
+      lcFinancingRequestId: string | null;
+      lcRequestNumber: string | null;
+      applicantName: string | null;
+      requestDate: string | null;
+      lcStatus: string | null;
+      [key: string]: string | null;
+    }
+  | Record<string, string>;
+
+export const filterSearchParameters :Parameter = {
   financingRequestNumber: "",
   lcRequestNumber: "",
   applicantName: "",
@@ -38,22 +48,13 @@ export const parameterMapping: TableDataMapping = {
   searchKey: "searchKey",
 };
 
-export const emptyParameters = {
+export const emptyParameters :Parameter = {
   lcFinancingRequestId: "",
   lcRequestNumber: "",
   applicantName: "",
   requestDate: "",
   lcStatus: "",
 };
-
-export interface Parameter {
-  lcFinancingRequestId: string | null;
-  lcRequestNumber: string | null;
-  applicantName: string | null;
-  requestDate: string | null;
-  lcStatus: string | null;
-  [key: string]: string | null;
-}
 
 export const statusColors: { [key: string]: string } = {
   APPROVED: "green",

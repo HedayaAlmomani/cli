@@ -84,6 +84,7 @@ const createFilterSectionFile = () => {
 
   const myFunctions = `
     const handleChange = (newValue: string | null, key: keyof Parameter) => {
+        //@ts-ignore
       setParameterFilter((prev) => ({ ...prev, [key]: newValue }));
     };
   

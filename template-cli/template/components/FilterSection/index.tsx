@@ -19,7 +19,7 @@ import './style.scss'
   setParameter: React.Dispatch<React.SetStateAction<Parameter>>;
   setPageNumber: React.Dispatch<React.SetStateAction<number>>;
   setSort: React.Dispatch<React.SetStateAction<string>>;
-  setCurrentHeadCell: React.Dispatch<React.SetStateAction<string | number>>;
+  setCurrentHeadCell: React.Dispatch<React.SetStateAction<string>>;
   disabled?: boolean;
 }
  
@@ -42,7 +42,7 @@ import './style.scss'
   
   
     const handleChange = (newValue: string | null, key: keyof Parameter) => {
-      //@ts-ignore
+        //@ts-ignore
       setParameterFilter((prev) => ({ ...prev, [key]: newValue }));
     };
   
