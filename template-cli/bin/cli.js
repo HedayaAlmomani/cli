@@ -3,6 +3,7 @@ const path = require("path");
 const process = require("process");
 const { createFilterSectionFile, replaceTextInFile } = require("./functions");
 const filterParameters = require("../configs/filterParameter.json");
+const serviceInfo = require("../configs/serviceInfo.json");
 
 const parentFolder = path.dirname(__dirname);
 const templateFolder = path.join(parentFolder, "template");
@@ -50,7 +51,7 @@ function generateFunctionDefinitions(tableParameters) {
     })
     .join(",\n");
 }
-// handle the filter 
+// handle the filter
 function generateObjectString(paramsArray) {
   // Create the initial string with the opening curly brace
   let objectString = "{\n";
@@ -117,12 +118,12 @@ async function main() {
       "TableSection",
       "index.tsx"
     );
+    const servicePath = path.join(targetFolder, "services", "index.tsx");
     await replaceTextInFile(filePath, '"MY_PARAMETER"', myFunctions);
+    await replaceTextInFile(servicePath, '"servicesInfo"',JSON.stringify(serviceInfo) );
     const filterEmptyData = generateObjectString(filterParameters);
-    console.log(filterEmptyData);
-    
     const headCells = JSON.stringify(transformArray(tableParameters));
-    
+
     await replaceTextInFile(
       filePath,
       '"filterSearchParameters"',

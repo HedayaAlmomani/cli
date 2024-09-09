@@ -1,8 +1,8 @@
 //@ts-ignore
 import { HttpService } from "@arena/common-web";
-import { applicationName, getAllDataRout } from "../constant";
-const httpService = new HttpService(applicationName);
-
+const serviceInfo ="servicesInfo"
+//@ts-ignore
+const httpService = new HttpService(serviceInfo?.applicationName);
 interface RequestOptions {
   withSuccessToast?: boolean;
   manualClose?: boolean;
@@ -38,7 +38,8 @@ export const getAllDataService = ({
   then,
   catchError,
 }: RequestParams<null, DataApi>) => {
-  return httpService.get(getAllDataRout, {
+  //@ts-ignore
+  return httpService.get(serviceInfo?.getAllDataRout, {
     queries,
     options,
     then,

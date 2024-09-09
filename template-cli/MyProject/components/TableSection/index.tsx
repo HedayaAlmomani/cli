@@ -15,8 +15,6 @@ import { Utils, haveAccess } from "@arena/common-web";
 import "./style.scss";
 //@ts-ignore
 import { getAllDataService } from "../../services";
-//@ts-ignore
-import { permissions, TableDataMapping } from "../../constant";
 import FilterSection from "../FilterSection";
 export type Parameter = Record<string, string | null>;
 
@@ -30,30 +28,22 @@ const HedayaFinancingRequests = () => {
   const [parameter, setParameter] = useState<Parameter>(
     //@ts-ignore
     {
-      financingRequestNumber: "",
-      lcRequestNumber: "",
-      applicantName: "",
-      lcStatus: "",
-      requestDate: "",
-      searchKey: "",
-    }
+  financingRequestNumber: "",
+  lcRequestNumber: "",
+  applicantName: "",
+  lcStatus: "",
+  requestDate: "",
+  searchKey: "",
+}
   );
-  const headCellsFinanceRequests = [
-    {
-      id: "financingRequestNumber",
-      label: "LC Request Number",
-      sortable: true,
-    },
-    { id: "requestDate", label: "Request Date", sortable: true },
-    { id: "lcRequestNumber", label: "LC Request Number", sortable: true },
-    { id: "applicantName", label: "Applicant Name", sortable: true },
-    { id: "lcStatus", label: "LC Status", sortable: true },
-    { id: "stage", label: "LC Stage", sortable: true },
-    { id: "actions", label: "Actions", sortable: false },
-  ];
+  const headCellsFinanceRequests = [{"id":"financingRequestNumber","label":"LC Request Number","sortable":true},{"id":"requestDate","label":"Request Date","sortable":true},{"id":"lcRequestNumber","label":"LC Request Number","sortable":true},{"id":"applicantName","label":"Applicant Name","sortable":true},{"id":"lcStatus","label":"LC Status","sortable":true},{"id":"stage","label":"LC Stage","sortable":true},{"id":"actions","label":"Actions","sortable":false}];
   const statusColors = { DRAFT: "gray" };
   // avaliable Colors => "green" , "red" , "c" , "blue" ,"black" ,"dark-blue" ,"orange"
-
+  const permissions: Record<string, string> = {
+    view: "",
+    edit: "",
+    delete: "",
+  };
   const handleParameterChange = (newValue: string, key: string) => {
     setParameter((prev: Parameter) => ({ ...prev, [key]: newValue }));
   };
@@ -84,31 +74,20 @@ const HedayaFinancingRequests = () => {
   const handleTableData = (data: any[]) => {
     return data?.map((item: any) => {
       const mappedData = {
-        financingRequestNumber: item.financingRequestNumber,
-        requestDate: Utils.dateFormatter(item.requestDate, "DD MMM YYYY"),
-        lcRequestNumber: item.lcRequestNumber,
-        applicantName: item.applicantName,
-        lcStatus: (
-          <ArenaDefaultChip
-            type={
-              statusColors[item?.lcStatus as keyof typeof statusColors] ||
-              "blue"
-            }
-          >
-            {Utils.formatFirstLetterToUpperCase(item.lcStatus)}
-          </ArenaDefaultChip>
-        ),
-        lcStage: (
-          <ArenaDefaultChip
-            type={
-              statusColors[item?.stage as keyof typeof statusColors] || "blue"
-            }
-          >
-            {Utils.formatFirstLetterToUpperCase(item.stage)}
-          </ArenaDefaultChip>
-        ),
-        searchKey: item.searchKey,
-      };
+      financingRequestNumber: item.financingRequestNumber,
+requestDate: Utils.dateFormatter(item.requestDate, 'DD MMM YYYY'),
+lcRequestNumber: item.lcRequestNumber,
+applicantName: item.applicantName,
+lcStatus: <ArenaDefaultChip 
+                   type={statusColors[item?.lcStatus as keyof typeof statusColors] || "blue"}>
+                   {Utils.formatFirstLetterToUpperCase(item.lcStatus)}
+                 </ArenaDefaultChip>,
+lcStage: <ArenaDefaultChip 
+                   type={statusColors[item?.stage as keyof typeof statusColors] || "blue"}>
+                   {Utils.formatFirstLetterToUpperCase(item.stage)}
+                 </ArenaDefaultChip>,
+searchKey: item.searchKey
+    };
       const ViewButton = (
         <Button
           variant="link"
