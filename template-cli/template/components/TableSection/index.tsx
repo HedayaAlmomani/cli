@@ -29,7 +29,7 @@ const HedayaFinancingRequests = () => {
     //@ts-ignore
     "filterSearchParameters"
   );
-  const headCellsFinanceRequests = "headCellsFinanceRequests";
+  const headCellsData = "headCellsData";
   const statusColors = { DRAFT: "gray" };
   // avaliable Colors => "green" , "red" , "c" , "blue" ,"black" ,"dark-blue" ,"orange"
   const permissions: Record<string, string> = {
@@ -156,7 +156,7 @@ const HedayaFinancingRequests = () => {
 
       <div>
         <Table
-          headCells={headCellsFinanceRequests}
+          headCells={headCellsData}
           data={handleTableData(data)}
           currentHeadCell={currentHeadCell}
           setCurrentHeadCell={setCurrentHeadCell}

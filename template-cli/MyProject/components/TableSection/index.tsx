@@ -36,7 +36,7 @@ const HedayaFinancingRequests = () => {
   searchKey: "",
 }
   );
-  const headCellsFinanceRequests = [{"id":"financingRequestNumber","label":"LC Request Number","sortable":true},{"id":"requestDate","label":"Request Date","sortable":true},{"id":"lcRequestNumber","label":"LC Request Number","sortable":true},{"id":"applicantName","label":"Applicant Name","sortable":true},{"id":"lcStatus","label":"LC Status","sortable":true},{"id":"stage","label":"LC Stage","sortable":true},{"id":"actions","label":"Actions","sortable":false}];
+  const headCellsData = [{"id":"financingRequestNumber","label":"LC Request Number","sortable":true},{"id":"requestDate","label":"Request Date","sortable":true},{"id":"lcRequestNumber","label":"LC Request Number","sortable":true},{"id":"applicantName","label":"Applicant Name","sortable":true},{"id":"lcStatus","label":"LC Status","sortable":true},{"id":"stage","label":"LC Stage","sortable":true},{"id":"actions","label":"Actions","sortable":false}];
   const statusColors = { DRAFT: "gray" };
   // avaliable Colors => "green" , "red" , "c" , "blue" ,"black" ,"dark-blue" ,"orange"
   const permissions: Record<string, string> = {
@@ -177,7 +177,7 @@ searchKey: item.searchKey
 
       <div>
         <Table
-          headCells={headCellsFinanceRequests}
+          headCells={headCellsData}
           data={handleTableData(data)}
           currentHeadCell={currentHeadCell}
           setCurrentHeadCell={setCurrentHeadCell}

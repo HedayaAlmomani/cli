@@ -123,7 +123,7 @@ async function main() {
       '"filterSearchParameters"',
       filterEmptyData
     );
-    await replaceTextInFile(filePath, '"headCellsFinanceRequests"', headCells);
+    await replaceTextInFile(filePath, '"headCellsData"', headCells);
 
     console.log(`Template copied to ${targetFolder}`);
   } catch (error) {
