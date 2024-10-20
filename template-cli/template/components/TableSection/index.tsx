@@ -18,7 +18,7 @@ import { getAllDataService } from "../../services";
 import FilterSection from "../FilterSection";
 export type Parameter = Record<string, string | null>;
 
-const HedayaFinancingRequests = () => {
+const TableSection = () => {
   const [pageNumber, setPageNumber] = useState<number>(0);
   const [totalElements, setTotalElements] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -188,4 +188,4 @@ const HedayaFinancingRequests = () => {
   );
 };
 
-export default HedayaFinancingRequests;
+export default TableSection;
