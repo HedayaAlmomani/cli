@@ -49,7 +49,7 @@ function generateFunctionDefinitions(tableParameters) {
     .join(",\n");
 }
 
-// Function to generate empty parameters for filter 
+// Function to generate empty parameters for filter
 function generateObjectString(paramsArray) {
   let objectString = "{\n";
 
@@ -114,7 +114,11 @@ async function main() {
     );
     const servicePath = path.join(targetFolder, "services", "index.tsx");
     await replaceTextInFile(filePath, '"MY_PARAMETER"', myFunctions);
-    await replaceTextInFile(servicePath, '"servicesInfo"',JSON.stringify(serviceInfo) );
+    await replaceTextInFile(
+      servicePath,
+      '"servicesInfo"',
+      JSON.stringify(serviceInfo)
+    );
     const filterEmptyData = generateObjectString(filterParameters);
     const headCells = JSON.stringify(transformArray(tableParameters));
 

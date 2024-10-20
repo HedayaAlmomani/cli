@@ -15,11 +15,11 @@ import {
 import './style.scss'
  type Parameter = Record<string, string | null>;
 const emptyParameters = {
-  lcFinancingRequestId: "",
+  financingRequestNumber: "",
   lcRequestNumber: "",
   applicantName: "",
-  requestDate: "",
   lcStatus: "",
+  requestDate: "",
 }
  interface FilterSectionProps {
   parameter: Parameter;

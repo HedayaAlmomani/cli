@@ -1,15 +1,13 @@
 const fs = require("fs");
 const filterParameters = require("../../configs/filterParameter.json");
-function generateCustomObjectString(paramsArray) {
-  // Define the keys and the order you want in the final object
-  const desiredKeys = {
-    lcFinancingRequestId: "",
-    lcRequestNumber: "",
-    applicantName: "",
-    requestDate: "",
-    lcStatus: "",
-  };
 
+function generateCustomObjectString() {
+  // Define the keys and the order you want in the final object
+
+  const desiredKeys = filterParameters.reduce((acc, item) => {
+    acc[item["parameterName"]] = "";
+    return acc;
+  }, {});
   // Construct the string based on the desiredKeys
   let objectString = "{\n";
   Object.keys(desiredKeys).forEach((key) => {
@@ -36,7 +34,7 @@ const createFilterSectionFile = () => {
       import { Utils } from '@arena/common-web'`,
     "import './style.scss'",
     " type Parameter = Record<string, string | null>;",
-    `const emptyParameters = ${generateCustomObjectString(filterParameters)}`,
+    `const emptyParameters = ${generateCustomObjectString()}`,
   ];
 
   const formFields = filterParameters
