@@ -32,7 +32,7 @@ function handleInputField(name, type) {
   const stateType = type === "number" ? "number" : "string";
   const stateStr = `const [${name}, set${capitalize(
     name
-  )}] = useState<${stateType}>(${type === "number" ? 0 : '""'});`;
+  )}] = useState<${stateType}>(${type === "number" ? '' : '""'});`;
 
   const elementStr = `
     <ArenaInput

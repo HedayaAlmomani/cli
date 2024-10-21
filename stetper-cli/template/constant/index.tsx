@@ -9,9 +9,9 @@ export const stepsMap = {
 };
 
 export const stepperInfo = [
-  { title: "Borrower Information" },
-  { title: "Employment & Income" },
-  { title: "Financial Information" },
-  { title: "Documents" },
-  { title: "Terms and conditions " },
+  { title: "RegistrationForm" },
+  { title: "FeedbackForm" },
+  { title: "OrderForm" },
+  { title: "SupportTicketForm" },
+  { title: "AppointmentForm" },
 ];
