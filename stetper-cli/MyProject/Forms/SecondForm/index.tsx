@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom'
 //@ts-ignore
 import { ContextData } from '../../types'
 //@ts-ignore
-import CustomLabel from '../CustomLabel'
+import CustomLabel from '../../components/CustomLabel'
 //@ts-ignore
 import './style.scss'
 import { StepperContext } from '../../stepperPage'
