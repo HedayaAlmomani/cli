@@ -9,10 +9,69 @@ const templateFolder = path.join(parentFolder, "template");
 const targetFolder = path.join(process.cwd(), "MyProject");
 const formsFolder = path.join(targetFolder, "Forms");
 
-// Configuration array
 const configs = [
-  { folderName: "form1", content: formTemplate },
-  { folderName: "form2", content: formTemplate },
+  {
+    folderName: "form1",
+    content: formTemplate,
+    formConfig: [
+      {
+        name: "firstName",
+        field: "input",
+        type: "string",
+      },
+      {
+        name: "number",
+        field: "input",
+        type: "number",
+      },
+      {
+        name: "account",
+        field: "select",
+        type: "string",
+      },
+      {
+        name: "mobileNumber",
+        field: "phone",
+        type: "string",
+      },
+      {
+        name: "document",
+        field: "upload",
+        type: "file",
+      },
+    ],
+  },
+  {
+    folderName: "form2",
+    content: formTemplate,
+    formConfig: [
+      {
+        name: "firstName",
+        field: "input",
+        type: "string",
+      },
+      {
+        name: "number",
+        field: "input",
+        type: "number",
+      },
+      {
+        name: "account",
+        field: "select",
+        type: "string",
+      },
+      {
+        name: "mobileNumber",
+        field: "phone",
+        type: "string",
+      },
+      {
+        name: "document",
+        field: "upload",
+        type: "file",
+      },
+    ],
+  },
 ];
 
 async function main() {
