@@ -13,8 +13,8 @@ import { getSpecificLoanService, getSpecificTaskById } from "../services";
 //@ts-ignore
 import { Utils } from "@arena/common-web";
 import "./style.scss";
-import FirstForm from "../components/FirstForm";
 import SecondForm from "../components/SecondForm";
+import FirstForm from "../Forms/form1";
 
 //@ts-ignore
 export const StepperContext = createContext<StepperContextData>();
