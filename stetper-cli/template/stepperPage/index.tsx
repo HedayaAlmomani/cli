@@ -27,7 +27,7 @@ const StepperPage = () => {
   const [data, setData] = useState<{}>({});
   const [recordId, setRecordId] = useState<string>("");
   const [openDialog, setOpenDialog] = useState<boolean>(true);
-  const [completedSteps, setCompletedSteps] = useState<number[]>([
+  const [completedSteps, setCompletedSteps] = useState<number[]>([0,
     1, 2, 3, 4, 5,
   ]);
   const [currency, setCurrency] = useState<string>("");
