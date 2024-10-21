@@ -172,7 +172,7 @@ const StepperPage = () => {
             className="stepper-components-container"
             id="stepper-components-container-id"
           >
-            <div className="loan-header">Loan Request</div>
+            <div className="loan-header"></div>
             <div id="stepComponentSection" className="current-step-container">
               {StepComponent}
             </div>
