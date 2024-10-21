@@ -1,0 +1,32 @@
+.steeper-form-container {
+  padding: 20px;
+  display: flex;
+
+  .main-form {
+    width: calc(100% - 738px);
+  }
+
+  .footer-steeper-form {
+    z-index: 1;
+    position: fixed;
+    background-color: #fff;
+    bottom: 0;
+    right: 0;
+    height: 70px;
+    padding: 12px 30px 12px 30px;
+    border-top: 1px solid #d8dae5;
+    width: calc(100% - 288px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    [class^="customBtn"] {
+      width: 202px;
+    }
+    .actions {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+}

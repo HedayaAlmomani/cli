@@ -1,0 +1,12 @@
+.back-section-container {
+  width: 288px;
+  border-bottom: 1px solid #d8dae5;
+  height: 81px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 32px;
+  svg {
+    cursor: pointer;
+  }
+}
