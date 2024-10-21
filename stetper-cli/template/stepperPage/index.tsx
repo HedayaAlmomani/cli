@@ -13,9 +13,8 @@ import { getSpecificLoanService, getSpecificTaskById } from "../services";
 //@ts-ignore
 import { Utils } from "@arena/common-web";
 import "./style.scss";
-import SecondForm from "../components/SecondForm";
-import FirstForm from "../Forms/form1";
-
+//@ts-ignore
+FormsImports;
 //@ts-ignore
 export const StepperContext = createContext<StepperContextData>();
 const StepperPage = () => {
@@ -111,11 +110,7 @@ const StepperPage = () => {
   interface StepComponentProps {}
 
   const stepsComponents: ReactElement<StepComponentProps>[] = [
-    <FirstForm />,
-    <SecondForm />,
-    <h1>step 3</h1>,
-    <h1>step 4</h1>,
-    <h1>step 5</h1>,
+    StepsComponentData
   ];
   const StepComponent = stepsComponents[currentStep];
   const scrollTop = () => {
