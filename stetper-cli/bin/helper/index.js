@@ -224,9 +224,33 @@ async function createFormStructures(configs, formsFolder) {
     console.error("Error creating form structures:", error);
   }
 }
+async function replaceFormsImports(stepperPageFilePath, configs) {
+  try {
+    let content = await fs.readFile(stepperPageFilePath, "utf8");
+    // Generate import statements
+    const importsStatements = configs.map((item) => {
+      return `import ${item?.folderName} from "../Forms/${item?.folderName}";`;
+    });
+    const StepsComponents = configs.map((item) => {
+      return `  <${item?.folderName} />,`;
+    });
+    const importsResult = importsStatements.join("\n");
+    const componentsResult = StepsComponents.join("\n");
 
+    // Replace placeholders in content
+    let modifiedContent = content
+      .replace(/FormsImports/g, importsResult)
+      .replace(/StepsComponentData/g, componentsResult);
+
+    // Write the modified content back to the file
+    await fs.writeFile(stepperPageFilePath, modifiedContent, "utf8");
+  } catch (error) {
+    console.error("Error replacing FormsImports:", error);
+  }
+}
 module.exports = {
   copyTemplateFolder,
   buildForm,
   createFormStructures,
+  replaceFormsImports,
 };

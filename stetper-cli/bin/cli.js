@@ -24,7 +24,11 @@
 const fs = require("fs").promises;
 const path = require("path");
 const process = require("process");
-const { copyTemplateFolder, createFormStructures } = require("./helper");
+const {
+  copyTemplateFolder,
+  createFormStructures,
+  replaceFormsImports,
+} = require("./helper");
 const { formTemplate } = require("./constant");
 
 const parentFolder = path.dirname(__dirname);
@@ -99,46 +103,12 @@ const configs = [
   },
 ];
 
-async function replaceFormsImports() {
-  try {
-    let content = await fs.readFile(stepperPageFilePath, "utf8");
-
-    // Generate import statements
-    const importsStatements = configs.map((item) => {
-      return `import ${item?.folderName} from "../Forms/${item?.folderName}";`;
-    });
-
-    // Generate component usage
-    const StepsComponents = configs.map((item) => {
-      return `  <${item?.folderName} />,`;
-    });
-
-    // Join import statements and components with newlines
-    const importsResult = importsStatements.join("\n");
-    const componentsResult = StepsComponents.join("\n");
-
-    // Replace placeholders in content
-    let modifiedContent = content
-      .replace(/FormsImports/g, importsResult)
-      .replace(/StepsComponentData/g, componentsResult);
-
-    // Write the modified content back to the file
-    await fs.writeFile(stepperPageFilePath, modifiedContent, "utf8");
-
-    console.log(
-      "Replacement successful: 'FormsImports' has been replaced with 'import' and 'StepsComponentData' has been replaced."
-    );
-  } catch (error) {
-    console.error("Error replacing FormsImports:", error);
-  }
-}
-
 async function main() {
   try {
     await copyTemplateFolder(templateFolder, targetFolder);
     await createFormStructures(configs, formsFolder);
 
-    await replaceFormsImports();
+    await replaceFormsImports(stepperPageFilePath, configs);
   } catch (error) {
     console.error("Error processing template:", error);
   }
