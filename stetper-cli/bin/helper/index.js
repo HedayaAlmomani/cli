@@ -187,6 +187,28 @@ function buildForm(config) {
 }
 
 // this function will create forms folder and create the folders files from config array
+// async function createFormStructures(configs, formsFolder) {
+//   try {
+//     // Create the Forms folder
+//     await fs.mkdir(formsFolder, { recursive: true });
+
+//     // Iterate through the configurations
+//     for (const { folderName, content } of configs) {
+//       const formFolder = path.join(formsFolder, folderName);
+//       // Create the folder for each form
+//       await fs.mkdir(formFolder, { recursive: true });
+
+//       // Create index.tsx file with the specified content
+//       await fs.writeFile(path.join(formFolder, "index.tsx"), content, "utf8");
+      
+//       await fs.writeFile(path.join(formFolder, "style.scss"), "", "utf8");
+//     }
+
+//     console.log("Form structures created successfully.");
+//   } catch (error) {
+//     console.error("Error creating form structures:", error);
+//   }
+// }
 async function createFormStructures(configs, formsFolder) {
   try {
     // Create the Forms folder
@@ -198,8 +220,16 @@ async function createFormStructures(configs, formsFolder) {
       // Create the folder for each form
       await fs.mkdir(formFolder, { recursive: true });
 
-      // Create index.tsx file with the specified content
-      await fs.writeFile(path.join(formFolder, "index.tsx"), content, "utf8");
+      // Replace MyStates with the desired statement
+      const modifiedContent = content.replace(
+        /MyStates/g,
+        'const [state1, setState1] = useState(true)'
+      );
+
+      // Create index.tsx file with the modified content
+      await fs.writeFile(path.join(formFolder, "index.tsx"), modifiedContent, "utf8");
+      
+      // Create an empty style.scss file
       await fs.writeFile(path.join(formFolder, "style.scss"), "", "utf8");
     }
 
