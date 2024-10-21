@@ -1,0 +1,43 @@
+.steeper-layout-container {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  background-color: var(--background-color-main);
+
+  .steeper-layout {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  .stepper-section {
+    width: 288px;
+    height: 100%;
+    border-right: 1px solid #d8dae5;
+    background-color: #fff;
+  }
+
+  .stepper-components-container {
+    .loan-header {
+      background-color: #fff;
+      height: 81px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      width: 100vw;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 30px;
+      border-bottom: 1px solid #d8dae5;
+    }
+
+    .current-step-container {
+      height: calc(100vh - 150px);
+      overflow: overlay;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 const fs = require("fs").promises;
 const path = require("path");
+const { formTemplate, defaultStyle } = require("../constant");
 
 async function copyTemplateFolder(templateDir, targetDir) {
   try {
@@ -216,7 +217,7 @@ async function createFormStructures(configs, formsFolder) {
       );
 
       // Create an empty style.scss file
-      await fs.writeFile(path.join(formFolder, "style.scss"), "", "utf8");
+      await fs.writeFile(path.join(formFolder, "style.scss"), defaultStyle, "utf8");
     }
 
     console.log("Form structures created successfully.");
